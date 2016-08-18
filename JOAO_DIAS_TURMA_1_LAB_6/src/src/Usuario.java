@@ -47,6 +47,24 @@ public class Usuario {
 		credito += creditoAdicional;
 	}
 	
+	public String getTipo(){
+		return "Usuário";
+	}
+	
+	public double precoTotal(){
+		double total = 0;
+		for (Jogo i : listaJogos){
+			total += i.getPreco();
+		}
+		return total;
+	}
+	
+	public int getX2p(){
+		return 0;
+	}
+	
+	public void setX2p(int novoX2p){}
+	
 	@Override
 	public String toString(){
 		return nome;

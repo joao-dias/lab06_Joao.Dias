@@ -1,13 +1,26 @@
 package src;
 
 public class Plataforma extends Jogo{
-	private String tipo = "Plataforma";
 	
 	public Plataforma(String nome, double preco){
 		super(nome, preco);
 	}
 	
+	@Override
 	public String getTipo(){
-		return tipo;
+		return "Plataforma";
+	}
+	
+	@Override
+	public int registraJogada(int score, boolean zerou){
+		if (score > recorde){
+			recorde = score;
+		}
+		jogadas += 1;
+		if (zerou){
+			zerado += 1;
+			return 20;
+		}
+		return 0;
 	}
 }

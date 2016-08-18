@@ -7,14 +7,18 @@ public class Jogo {
 	int recorde = 0;
 	int jogadas = 0;
 	int zerado = 0;
-	ArrayList<String> jogabilidade = new ArrayList<String>();
+	HashSet<String> jogabilidade = new HashSet<String>();
 	
 	public Jogo(String nome, double preco){
 		this.nome = nome;
 		this.preco = preco;
 	}
 	
-	public void registraJogada(int score, boolean zerou){
+	public String getTipo(){
+		return "Jogo";
+	}
+	
+	public int registraJogada(int score, boolean zerou){
 		if (score > recorde){
 			recorde = score;
 		}
@@ -22,7 +26,9 @@ public class Jogo {
 		if (zerou){
 			zerado += 1;
 		}
+		return 0;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
