@@ -1,9 +1,10 @@
 package src;
 
+/* Subclasse de Usuario: Noob */
 public class Noob extends Usuario{
 	private int x2p = 0;
 	
-	public Noob(String nome, String login, double credito){
+	public Noob(String nome, String login, double credito) throws Exception{
 		super(nome, login, credito);
 	}
 	
@@ -22,25 +23,24 @@ public class Noob extends Usuario{
 		x2p = novoX2p;
 	}
 	
+	/* Mesma funcionalidade que o "compraJogo" da Superclasse, com diferença na aplicação de desconto;
+	 * Aplica o desconto específico da Subclasse Noob;
+	 * Incrementa os pontos ganhos ao comprar o jogo;
+	 * Retorna true, caso a operação seja bem sucedida.
+	 */
 	@Override
-	public boolean compraJogo(Jogo jogo){
-		if (credito < (jogo.getPreco() - (jogo.getPreco() * 0.1))){ //Desconto de 10%
-			return false;
+	public boolean compraJogo(Jogo jogo) throws Exception{
+		if (jogo == null){
+			throw new Exception("O Jogo não pode ser nulo");
+		}else if (listaJogos.contains(jogo)){
+			throw new Exception("Esse jogo já foi comprado");
+		}else if (credito < (jogo.getPreco() - (jogo.getPreco() * 0.1))){ 
+			throw new Exception("Crédito insuficiente para realização da compra");
 		}else{
 			credito -= (jogo.getPreco() - (jogo.getPreco() * 0.1));
 			listaJogos.add(jogo);
 			x2p += (int) (jogo.getPreco()) * 10;
 			return true;
 		}
-	}
-	
-	public boolean registraJogada(String nomeJogo, int score, boolean zerou){
-		for (int i = 0; i < listaJogos.size(); i++){
-			if (listaJogos.get(i).getNome().equals(nomeJogo)){
-				x2p += listaJogos.get(i).registraJogada(score, zerou);
-				return true;
-			}
-		}
-		return false;
 	}
 }

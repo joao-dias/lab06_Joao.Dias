@@ -1,8 +1,9 @@
 package src;
 
+/* Subclasse de Jogo: RPG */
 public class RPG extends Jogo {
 	
-	public RPG(String nome, double preco){
+	public RPG(String nome, double preco) throws Exception{
 		super(nome, preco);
 	}
 	
@@ -11,6 +12,9 @@ public class RPG extends Jogo {
 		return "RPG";
 	}
 	
+	/* Mesma funcionalidade do "registraJogada" da Superclasse, com diferença em seu retorno;
+	 * Retorna o score relativo ao tipo RPG para cada vez que é jogado.
+	 */
 	@Override
 	public int registraJogada(int score, boolean zerou){
 		if (score > recorde){
@@ -21,6 +25,11 @@ public class RPG extends Jogo {
 			zerado += 1;
 		}
 		return 10;
+	}
+	
+	@Override
+	public String toString(){
+		return this.nome + "(" + getTipo() + ") - " + this.preco;
 	}
 	
 }

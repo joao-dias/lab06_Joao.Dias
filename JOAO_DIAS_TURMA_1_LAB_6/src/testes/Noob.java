@@ -1,16 +1,16 @@
-package src;
+package testes;
 
-/* Subclasse de Usuario: Veterano */
-public class Veterano extends Usuario{
-	private int x2p = 1000;
+/* Subclasse de Usuario: Noob */
+public class Noob extends Usuario{
+	private int x2p = 0;
 	
-	public Veterano(String nome, String login, double credito) throws Exception{
+	public Noob(String nome, String login, double credito) throws Exception{
 		super(nome, login, credito);
 	}
 	
 	@Override
 	public String getTipo(){
-		return "Veterano";
+		return "Noob";
 	}
 	
 	@Override
@@ -24,7 +24,7 @@ public class Veterano extends Usuario{
 	}
 	
 	/* Mesma funcionalidade que o "compraJogo" da Superclasse, com diferença na aplicação de desconto;
-	 * Aplica o desconto específico da Subclasse Veterano;
+	 * Aplica o desconto específico da Subclasse Noob;
 	 * Incrementa os pontos ganhos ao comprar o jogo;
 	 * Retorna true, caso a operação seja bem sucedida.
 	 */
@@ -34,12 +34,12 @@ public class Veterano extends Usuario{
 			throw new Exception("O Jogo não pode ser nulo");
 		}else if (listaJogos.contains(jogo)){
 			throw new Exception("Esse jogo já foi comprado");
-		}else if (credito < (jogo.getPreco() - (jogo.getPreco() * 0.2))){ 
+		}else if (credito < (jogo.getPreco() - (jogo.getPreco() * 0.1))){ 
 			throw new Exception("Crédito insuficiente para realização da compra");
 		}else{
-			credito -= (jogo.getPreco() - (jogo.getPreco() * 0.2));
+			credito -= (jogo.getPreco() - (jogo.getPreco() * 0.1));
 			listaJogos.add(jogo);
-			x2p += (int) (jogo.getPreco()) * 15;
+			x2p += (int) (jogo.getPreco()) * 10;
 			return true;
 		}
 	}

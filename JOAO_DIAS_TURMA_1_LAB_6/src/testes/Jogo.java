@@ -1,4 +1,4 @@
-package src;
+package testes;
 import java.util.*;
 
 /* Superclasse: Jogo */
@@ -8,7 +8,7 @@ public class Jogo {
 	public int recorde = 0;
 	public int jogadas = 0;
 	public int zerado = 0;
-	private HashSet<String> jogabilidade = new HashSet<String>();
+	public HashSet<String> jogabilidade = new HashSet<String>();
 	
 	public Jogo(String nome, double preco) throws Exception{
 		if (nome == null){

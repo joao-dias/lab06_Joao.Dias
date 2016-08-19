@@ -1,9 +1,9 @@
-package src;
+package testes;
 import java.util.*; 
 
 /* Classe: Loja */
 public class Loja {
-	private HashMap<String, Usuario> listaUsuarios = new HashMap<String, Usuario>();
+	public HashMap<String, Usuario> listaUsuarios = new HashMap<String, Usuario>();
 	
 	public Loja(){}
 	

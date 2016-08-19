@@ -1,4 +1,4 @@
-package src;
+package testes;
 
 /* Subclasse de Usuario: Veterano */
 public class Veterano extends Usuario{
